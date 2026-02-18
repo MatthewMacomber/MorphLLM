@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "morphllm"
+version = "0.1.0"
+description = "Adaptive Morphogenic Engine — an LLM that grows organically from a minimal seed"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    "torch>=2.0",
+    "psutil>=5.9",
+    "pynvml>=11.5",
+    "tokenmonster",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+]
+
+[project.scripts]
+morphllm = "morphllm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["morphllm*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
